@@ -5,7 +5,6 @@ import json
 from dotenv import load_dotenv
 from rapidfuzz import process, fuzz
 from pinecone import Pinecone
-import pandas as pd
 
 # ── Page config ───────────────────────────────────────────────────────
 st.set_page_config(
@@ -177,8 +176,8 @@ def load_resources():
     index_pinecone = pc.Index("bis-speeches")
 
     # Author list for fuzzy matching
-    df = pd.read_csv("speeches_full.csv")
-    author_list = df['author'].dropna().unique().tolist()
+    with open('authors.json', 'r') as f:
+        author_list = json.load(f)
 
     return llm, embed_model, index_pinecone, author_list
 
