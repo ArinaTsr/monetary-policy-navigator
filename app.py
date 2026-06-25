@@ -161,7 +161,7 @@ def load_resources():
 
     # LLM
     llm = GoogleGenAI(
-        model="gemini-2.5-flash",
+        model="gemini-2.0-flash",
         api_key=google_key,
         system_prompt="You are a concise central bank analyst. Keep answers to 3-5 sentences. No preamble, no step headers."
     )
