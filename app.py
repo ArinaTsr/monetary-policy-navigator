@@ -313,10 +313,6 @@ def retrieve_unique(query, top_k=4, institutions=None, author=None):
 
         for inst in institutions:
     # Remove other institution names from query to avoid embedding bias
-            inst_query = query.lower()
-            for other_inst in institutions:
-                if other_inst != inst:
-                    inst_query = inst_query.replace(other_inst.lower(), "").strip()
             inst_query = f"{inst} {inst_query}"
             inst_vector = embed_model.get_text_embedding(inst_query)
 
